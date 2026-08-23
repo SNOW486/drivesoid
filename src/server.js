@@ -16,7 +16,7 @@ const SETUP_PORT  = parseInt(process.env.DRIVESOID_SETUP_PORT || '24601', 10);
 
 function loopbackOnly(req, res, next) {
   const addr = req.socket.remoteAddress;
-  if (addr === '127.0.0.1' || addr === '::1' || addr === '::ffff:127.0.0.1') return next();
+  if (addr === '0.0.0.0' || addr === '::1' || addr === '::ffff:127.0.0.1') return next();
   res.status(403).json({ error: 'loopback only' });
 }
 
