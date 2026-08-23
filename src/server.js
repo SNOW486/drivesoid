@@ -16,7 +16,7 @@ const SETUP_PORT  = parseInt(process.env.DRIVESOID_SETUP_PORT || '24601', 10);
 
 function loopbackOnly(req, res, next) {
   const addr = req.socket.remoteAddress;
-  if (addr === '0.0.0.0' || addr === '::1' || addr === '::ffff:127.0.0.1') return next();
+  if (addr === '0.0.0.0' || addr === '::1' || addr === '::ffff:0.0.0.0') return next();
   res.status(403).json({ error: 'loopback only' });
 }
 
@@ -279,8 +279,8 @@ if (needsSetup()) {
   });
   app.get('*', (req, res) => res.redirect('/setup'));
 
-  const setupServer = app.listen(SETUP_PORT, '127.0.0.1', () => {
-    console.log(`[drives] First-time setup — open http://127.0.0.1:${SETUP_PORT}/setup`);
+  const setupServer = app.listen(SETUP_PORT, '0.0.0.0', () => {
+    console.log(`[drives] First-time setup — open http://0.0.0.0:${SETUP_PORT}/setup`);
   });
   setupServer.on('error', e => {
     if (e.code === 'EADDRINUSE') {
@@ -803,9 +803,9 @@ setInterval(loadStatus, 15000);
   });
 
   drives.start();
-  app.listen(PORT, '127.0.0.1', () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`[drives] Drivesoid listening on port ${PORT}`);
     console.log(`[drives] Persona: ${config.persona.name} / User: ${config.user.name}`);
-    console.log(`[drives] Dashboard: http://127.0.0.1:${PORT}/dashboard`);
+    console.log(`[drives] Dashboard: http://0.0.0.0:${PORT}/dashboard`);
   });
 }
