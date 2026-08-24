@@ -10,7 +10,7 @@
   "classifier": {
     "endpoint": "https://hk.xn--0xv303ar5c.com/v1",
     "model": "deepseek-v4-flash",
-    "api_key_env": "sk-aLbY4uFP27krSGzmCs67n7O6uEO6tOuBaE89gmXhD5Ay4YmI"
+    "api_key_env": "DRIVES_API_KEY"
   },
   "server": {
     "port": 24601
