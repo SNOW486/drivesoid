@@ -1,16 +1,16 @@
 {
   "persona": {
-    "name": "Reef"
+    "name": "Cedar"
   },
   "user": {
-    "name": "小雪"
+    "name": "阿瑾"
   },
   "relation": "romantic",
   "timezone_offset_hours": 8,
   "classifier": {
     "endpoint": "https://hk.xn--0xv303ar5c.com/v1",
-    "model": "[特特价次kiro]claude-opus-4-6",
-    "api_key_env": "DRIVES_API_KEY"
+    "model": "deepseek-v4-flash",
+    "api_key_env": "sk-aLbY4uFP27krSGzmCs67n7O6uEO6tOuBaE89gmXhD5Ay4YmI"
   },
   "server": {
     "port": 24601
